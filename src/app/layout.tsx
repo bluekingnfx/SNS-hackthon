@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto, Roboto_Serif } from "next/font/google";
 import "./globals.css";
+import '@szhsin/react-menu/dist/index.css';
+import '@szhsin/react-menu/dist/transitions/zoom.css';
+import { GlobalDataProvider } from "@/context/globalContext";
+import NavBar from "./_components/NavBar/Navbar";
+import { AuthCtxProvider } from "@/context/AuthContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+
+
+const roboto_sans = Roboto({
+  variable: "--font-roboto-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const roboto_serif = Roboto_Serif({
+  variable: "--font-roboto-serif",
   subsets: ["latin"],
 });
+
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,9 +34,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${roboto_sans.variable} ${roboto_serif.variable} antialiased`}
       >
-        {children}
+        <AuthCtxProvider>
+          <GlobalDataProvider>
+            <NavBar />
+            {children}
+          </GlobalDataProvider>
+        </AuthCtxProvider>
       </body>
     </html>
   );

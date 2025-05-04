@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "typescript-config/consistent-casing": "off",
+    "axe/forms": [
+      "default",
+      {
+        "autocomplete-valid": "off",
+        "label": "off",
+        "select-name": "off"
+      }
+    ]
+  }
+}
